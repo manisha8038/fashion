@@ -117,7 +117,13 @@ background-color: aqua;
    
 
 }
-/* .css{
-    color: antiquewhite;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-} */
+.navbar-brand img {
+    width: 140px;
+   height: 70px;
+    margin-right:10px;
+}
+.cart-icon{
+    font-size: 40px;
+    /* margin-left: 2rem; */
+    color:yellow;
+}

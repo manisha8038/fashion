@@ -10,7 +10,8 @@ import { menubar } from "./view/data/data";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Register from './view/screen/Register'
 import Addtocard from "./view/screen/Addtocart";
-import { FaFacebookF, FaTwitter, FaInstagram} from 'react-icons/fa';
+import logo from "./view/img/fash_logo.jpg";
+import { FaFacebookF, FaTwitter, FaInstagram,FaShoppingCart} from 'react-icons/fa';
 import Login from "./view/screen/Login";
 // import {fa-thin fa-house} from "react-icons/fa";
 import { useState } from "react"; 
@@ -44,8 +45,14 @@ function logout(){
           <Nav
             className="me-auto my-2 my-lg-0" 
             style={{ maxHeight: '100px' }}
+            >
+            <Navbar.Brand href="/">
+                      <img src={logo} alt="Logo" />
+                    </Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
             
-          >
+          
                  <Nav.Link className="css" > </Nav.Link>
                  <Nav.Link style={{color :"white"}} href="/">Home</Nav.Link>
                  {
@@ -76,7 +83,9 @@ function logout(){
                user? <Button  style={{backgroundColor :"blue" ,color:"black"}} variant="outline-success" onClick={logout}>Logout</Button>:null
             }
           </Form>
-        
+            <Nav.Link  style={{ color: "white" }} href="/cart">
+              <FaShoppingCart className="cart-icon"/>
+            </Nav.Link>
       </Container>
     </Navbar>
          </Col>
