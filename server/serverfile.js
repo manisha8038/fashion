@@ -62,7 +62,7 @@ app.post('/addtocart',function(req,res){
     res.send(resultlog)
  })
 
- app.get('/showtocart',function(req,res){
+ app.post('/showtocart',function(req,res){
     let data=fs.readFileSync('./data/addtocart.json',"utf8")
     let adddata=[]
     data.split('\n').forEach(d=>{
@@ -76,6 +76,52 @@ app.post('/addtocart',function(req,res){
     console.log(add1);
     res.send(add1)
  })
+
+ 
+ app.post("/removecartitem",function(req,res){
+
+    try { fs.writeFileSync('./data/addtocart.json',"","utf8")
+    } catch (error) {
+            console.log("er");
+            console.log(error);    
+        }
+       var result
+       req.body.map(d=>{
+        result = fs.appendFileSync('./data/addtocart.json', JSON.stringify(d),"utf8")
+            fs.appendFileSync('./data/addtocart.json', "\n","utf8")
+       })
+
+       
+          let resultdata=""
+      if(!result){
+          resultdata={success:true,message:"Product remove to cart."}
+      }
+      else{
+          resultdata={success:false,message:"Oops! Product not remove to cart."}
+          
+      }
+      res.send(resultdata) 
+})
+
+
+
+app.post('/payment',function(req,res){
+  
+  
+    let result=fs.appendFileSync('./data/payment.json', JSON.stringify(req.body),"utf8")
+     fs.appendFileSync('./data/payment.json', "\n","utf8")
+     let resultdata=""
+     if(!result){
+         resultdata={success:true,message:"Order successfully"}
+     }
+     else{
+         resultdata={success:false,message:"Order not  successfully"}
+         
+     }
+     res.send(resultdata)
+  })
+ 
+
 app.listen(8080,function(err,data){
     if(err){
         console.log(err);

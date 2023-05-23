@@ -1,21 +1,53 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { product } from "../data/data";
+import axios from "axios";
 const Addtocart = () => {
   const [selectedProducts, setSelectedProducts] = useState([]);
 
+
+useEffect(()=>{
+  async function show(){
+    let res =await axios.post("showtocart",{}).catch(err=>alert(err))
+    console.log(res?.data);
+    setSelectedProducts(res?.data)
+  }
+  show()
+})
+async function show(){
+  let res =await axios.post("showtocart",{}).catch(err=>alert(err))
+  console.log(res?.data);
+  setSelectedProducts(res?.data)
+}
   // Function to handle adding a product to the cart
-  const handleAddtocart = (product) => {
-    setSelectedProducts([...selectedProducts, product]);
-    window.alert('Item added to cart.');
+  const handleAddtocart =async (product) => {
+    let params={
+      ...product
+    }
+    let res =await axios.post("addtocart",params).catch(err=>alert(err))
+      console.log(res.data);
+      let {success,message,data} =res.data
+      if(success){
+      alert(message)
+      show()
+      }
+      else{
+        alert(message)
+       }
+   // setSelectedProducts([...selectedProducts, product]);
+    //window.alert('Item added to cart.');
   };
   
   // Function to handle removing a product from the cart
-  const handleRemoveFromCart = (product) => {
+  const handleRemoveFromCart = async(product) => {
     const updatedProducts = selectedProducts.filter(
       (selectedProduct) => selectedProduct.id !== product.id
     );
-    setSelectedProducts(updatedProducts);
+    let res =await axios.post("removecartitem",updatedProducts).catch(err=>alert(err))
+    console.log(res?.data);
+    
+    show()
+    //setSelectedProducts(updatedProducts);
     window.alert('Item removed from cart.');
   };
 
@@ -113,7 +145,7 @@ const Addtocart = () => {
               >
                 Checkout
               </Link> */}
-              <Link to={{ pathname: '/payment', search: `?totalPrice=${totalPrice}`, state: { selectedProducts } }}
+              <Link to={{ pathname: '/payment', state: selectedProducts  }}
               className="btn btn-primary">Proceed to Payment</Link>
 
             </div>

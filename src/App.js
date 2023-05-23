@@ -83,7 +83,7 @@ function logout(){
                user? <Button  style={{backgroundColor :"blue" ,color:"black"}} variant="outline-success" onClick={logout}>Logout</Button>:null
             }
           </Form>
-            <Nav.Link  style={{ color: "white" }} href="/cart">
+            <Nav.Link  style={{ color: "white" }} href="/Addtocart">
               <FaShoppingCart className="cart-icon"/>
             </Nav.Link>
       </Container>
