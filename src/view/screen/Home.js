@@ -1,7 +1,7 @@
 import { Container, Row ,Col,Carousel,Card,ListGroup} from "react-bootstrap";
 import { product } from "../data/data";
 import { useNavigate } from "react-router-dom";
-
+import React  from 'react'
 export default function Home(){
   const nav = useNavigate()
   return(
@@ -108,4 +108,3 @@ export default function Home(){
   )
 
 }
-
