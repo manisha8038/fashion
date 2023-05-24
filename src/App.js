@@ -1,5 +1,5 @@
 import{BrowserRouter,Routes,Route} from "react-router-dom";
-import { Container, Row, Col,Button,Nav,Navbar,Form} from "react-bootstrap";
+import { Container, Row, Col,Button,Nav,Navbar,Form,FormControl,NavDropdown} from "react-bootstrap";
 import Home from "./view/screen/Home";
 import '../src/view/style/style.css'
 import About from "./view/screen/About";
@@ -10,11 +10,11 @@ import { menubar } from "./view/data/data";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Register from './view/screen/Register'
 import Addtocard from "./view/screen/Addtocart";
-import logo from "./view/img/fash_logo.jpg";
-import { FaFacebookF, FaTwitter, FaInstagram,FaShoppingCart} from 'react-icons/fa';
+import { FaFacebookF, FaTwitter, FaInstagram,FaShoppingCart,FaUserCircle} from 'react-icons/fa';
 import Login from "./view/screen/Login";
 // import {fa-thin fa-house} from "react-icons/fa";
 import { useState } from "react"; 
+
 
 
 
@@ -37,55 +37,54 @@ function logout(){
 
         <Row>
          <Col>
-         <Navbar  bg="dark" variant="dark" className="nav">
-      <Container fluid>
-        {/* <Navbar.Brand href="#">Navbar scroll</Navbar.Brand> */}
-        {/* <Navbar.Toggle aria-controls="navbarScroll" className="nav2" />
-        <Navbar.Collapse id="navbarScroll"> */}
-          <Nav
-            className="me-auto my-2 my-lg-0" 
-            style={{ maxHeight: '100px' }}
-            >
-            <Navbar.Brand href="/">
-                      <img src={logo} alt="Logo" />
-                    </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-
-            
+         <Navbar className="fa-nav" expand="lg">
+      <Container>
+      <Navbar.Brand href="#home">FASHION</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
           
-                 <Nav.Link className="css" > </Nav.Link>
-                 <Nav.Link style={{color :"white"}} href="/">Home</Nav.Link>
-                 {
-              menubar.map(function(d){
-              return(
-                <Nav.Link style={{color :"white"}} className="menu" href={`/${d}`}>{d}</Nav.Link>
-              )}
-              )}
-
-              {
-
-              user?null:<>
-               <Nav.Link style={{color :"white"}} href="/Register">Register</Nav.Link>
-
-               <Nav.Link  style={{color :"white"}} href="/Login">Login</Nav.Link>
-               </>
-              }
+                <Navbar.Collapse id="basic-navbar-nav">
+                  <Nav className="me-auto ">
+                    <Nav.Link href="/">Home</Nav.Link>
+                    {menubar.map(function (d) {
+                      return <Nav.Link href={`/${d}`}>{d}</Nav.Link>;
+                    })}
+                    <Nav/>    
           </Nav>
           <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button style={{backgroundColor :"blue" ,color:"black"}} variant="outline-success">Search</Button>
+                    <FormControl
+                      type="search"
+                      placeholder="Search"
+                      className="me-2"
+                      aria-label="Search"
+                    />
+                    <Button variant="outline-success">Search</Button>
             {
-               user? <Button  style={{backgroundColor :"blue" ,color:"black"}} variant="outline-success" onClick={logout}>Logout</Button>:null
+               user? <Button  style={{backgroundColor :"White" ,color:"black"}} variant="outline-success" onClick={logout}>Logout</Button>:null
             }
           </Form>
+          <Nav>
+                    <NavDropdown
+                      title={<FaUserCircle />}
+                      id="basic-nav-dropdown"
+                      className="login-icon"
+                    >
+
+                      {
+                      user ? <><NavDropdown.Item onClick={()=>("/profile")}>Profile </NavDropdown.Item><NavDropdown.Item onClick={logout}>Logout </NavDropdown.Item></> :<>
+                      <NavDropdown.Item href="/Login">Login</NavDropdown.Item>
+                      <NavDropdown.Divider />
+                      <NavDropdown.Item href="/Register">
+                        Sign Up
+                      </NavDropdown.Item>
+                      </>
+                      }
+                    </NavDropdown>
+          
             <Nav.Link  style={{ color: "white" }} href="/Addtocart">
               <FaShoppingCart className="cart-icon"/>
             </Nav.Link>
+       </Nav>
+       </Navbar.Collapse>
       </Container>
     </Navbar>
          </Col>
