@@ -10,10 +10,11 @@ import { menubar } from "./view/data/data";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Register from './view/screen/Register'
 import Addtocard from "./view/screen/Addtocart";
-import { FaFacebookF, FaTwitter, FaInstagram,FaShoppingCart,FaUserCircle} from 'react-icons/fa';
+import { FaFacebook, FaTwitter, FaInstagram,FaShoppingCart,FaUserCircle,FaPinterest} from 'react-icons/fa';
 import Login from "./view/screen/Login";
 // import {fa-thin fa-house} from "react-icons/fa";
 import { useState } from "react"; 
+
 
 
 
@@ -39,7 +40,7 @@ function logout(){
          <Col>
          <Navbar className="fa-nav" expand="lg">
       <Container>
-      <Navbar.Brand href="#home">FASHION</Navbar.Brand>
+      <Navbar.Brand href="#home">FASHION </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
           
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -112,15 +113,7 @@ function logout(){
     <footer className="footer">
       <Container>
         <Row>
-          <Col md={4}>
-            <h5>Contact Us</h5>
-            <p>123 Main Street<br />New York, NY 10001<br />Phone: (123) 456-7890<br />Email: info@example.com</p>
-            <ul className="list-unstyled list-inline">
-              <li className="list-inline-item"><a href="#!"><FaFacebookF /></a></li>
-              <li className="list-inline-item"><a href="#!"><FaTwitter /></a></li>
-              <li className="list-inline-item"><a href="#!"><FaInstagram /></a></li>
-            </ul>
-          </Col>
+        
           <Col md={4}>
             <h5>Quick Links</h5>
             <ul className="list-unstyled">
@@ -131,23 +124,62 @@ function logout(){
               
             </ul>
           </Col>
-          <Col md={4}>
-            <h5>Newsletter</h5>
-            <p>Subscribe to our newsletter to receive exclusive offers and the latest news on our products.</p>
-            <form>
-              <div className="form-group">
-                <input type="email" className="form-control" placeholder="Email Address" />
+          <Col>
+          <div className="container">
+          <div className="row">
+            <div className="col-md-4">
+              <h4>Contact Us</h4>
+              <ul className="list-unstyled">
+                <li>Phone: +1-123-456-7890</li>
+                <li>Email: info@fashion.com</li>
+              </ul>
+            </div>
+            <div className="col-md-4">
+              <h4>Follow Us</h4>
+              <div className="soci">
+                <ul className="list-inline social-media">
+                  <li>
+                    <a href="#">
+                      <FaFacebook />
+                    </a>
+                  </li>
+                  <li style={{ marginLeft: 10 }}>
+                    <a href="#">
+                      <FaTwitter />
+                    </a>
+                  </li>
+                  <li style={{ marginLeft: 10 }}>
+                    <a href="#">
+                      <FaInstagram />
+                    </a>
+                  </li>
+                  <li style={{ marginLeft: 10 }}>
+                    <a href="#">
+                      <FaPinterest />
+                    </a>
+                  </li>
+                </ul>
               </div>
-              <button type="submit" id="FSbutton" className="btn btn-primary btn-block">Subscribe</button>
-            </form>
-          </Col>
+            </div>
+            <div className="col-md-4">
+              <h4>Address</h4>
+              <p>127 Local Street</p>
+              <p>C Scheme, JAI 12345</p>
+              <p>302001</p>
+            </div>
+          </div>
+         
+        </div>
+        </Col>
+       
         </Row>
+        <div className="row">
+            <div className="col-md-12 text-center">
+              <p>&copy; 2023 FASHION. All rights reserved.</p>
+            </div>
+          </div>
         <hr />
-        <p className="text-muted text-center">Copyright © {new Date().getFullYear()}
-          {' '}
-          <a href="#!">Your Company</a>
-          {' '}
-          All rights reserved.</p>
+      
       </Container>
       </footer>
     

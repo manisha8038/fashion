@@ -55,6 +55,7 @@ else{
             <div className="w-25 bg-success m-auto rounded p-3 text-light">
             <h4>Bank Account Details</h4>
             <Form>
+              
       <Form.Group className="mb-3" controlId="formBasicEmail">
        
         <Form.Control type="email" placeholder="Bank Account Number" value={acno} onChange={d=>setAcno(d.target.value)}/>
@@ -77,7 +78,7 @@ else{
      </Form.Group>
 
       <Button variant="primary" onClick={paymentpage} >
-        submit
+        Submit Payment
       </Button>
     </Form>
             </div>
